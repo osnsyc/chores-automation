@@ -1,0 +1,337 @@
+<TaskerData sr="" dvi="1" tv="6.5.11">
+	<dmetric>1440.0,3088.0</dmetric>
+	<Profile sr="prof5" ve="2">
+		<cdate>1758023050000</cdate>
+		<edate>1758023050000</edate>
+		<flags>8</flags>
+		<id>5</id>
+		<mid0>2</mid0>
+		<Event sr="con0" ve="2">
+			<code>2076</code>
+			<pri>0</pri>
+			<Str sr="arg0" ve="3"/>
+			<Str sr="arg1" ve="3"/>
+		</Event>
+	</Profile>
+	<Project sr="proj0" ve="2">
+		<cdate>1758023050000</cdate>
+		<name>nfc</name>
+		<pids>5</pids>
+		<scenes>HTML Popup</scenes>
+		<tids>2</tids>
+	</Project>
+	<Scene sr="sceneHTML Popup">
+		<cdate>1758023050000</cdate>
+		<edate>1758023050000</edate>
+		<heightLand>-1</heightLand>
+		<heightPort>3088</heightPort>
+		<nme>HTML Popup</nme>
+		<widthLand>-1</widthLand>
+		<widthPort>1440</widthPort>
+		<WebElement sr="elements0" ve="2">
+			<flags>5</flags>
+			<geom>0,300,1440,2500,-1,-1,-1,-1</geom>
+			<Str sr="arg0" ve="3">Web1</Str>
+			<Int sr="arg1" val="2"/>
+			<Str sr="arg2" ve="3"/>
+			<Int sr="arg3" val="1"/>
+			<Int sr="arg4" val="0"/>
+			<Int sr="arg5" val="0"/>
+			<Int sr="arg6" val="0"/>
+			<Int sr="arg7" val="0"/>
+			<Str sr="arg8" ve="3"/>
+			<RectElement sr="background">
+				<flags>4</flags>
+				<geom>-1,-1,-1,-1,-1,-1,-1,-1</geom>
+				<Str sr="arg0" ve="3"/>
+				<Int sr="arg1" val="0"/>
+				<Str sr="arg2" ve="3"/>
+				<Str sr="arg3" ve="3"/>
+				<Int sr="arg4" val="0"/>
+				<Str sr="arg5" ve="3">#FF000000</Str>
+				<Int sr="arg6" val="0"/>
+				<Int sr="arg7" val="0"/>
+			</RectElement>
+		</WebElement>
+		<PropertiesElement sr="props">
+			<Int sr="arg0" val="1"/>
+			<Int sr="arg1" val="0"/>
+			<Str sr="arg2" ve="3">#00000000</Str>
+			<Int sr="arg3" val="0"/>
+			<Str sr="arg4" ve="3">HTML Popup</Str>
+			<Str sr="arg5" ve="3"/>
+			<Img sr="arg6" ve="2"/>
+			<Str sr="arg7" ve="3"/>
+		</PropertiesElement>
+	</Scene>
+	<Task sr="task2">
+		<cdate>1758023050000</cdate>
+		<edate>1758023050000</edate>
+		<id>2</id>
+		<nme>nfc</nme>
+		<pri>6</pri>
+		<Action sr="act0" ve="7">
+			<code>330</code>
+			<Bundle sr="arg0">
+				<Vals sr="val">
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES>&lt;StringArray sr=""&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;%nfc_id
+ID
+标签的唯一ID&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES1&gt;%nfc_id_with_colons
+ID With Colons
+Unique ID for the tag but with a colon between each 2 characters&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES1&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;%nfc_payload
+有效载荷
+文本格式的标记内容&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES3&gt;%nfc_present
+现状
+此标签文本格式的内容&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES3&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES4&gt;%nfc_types()
+类型
+NFC卡支持的技术类型&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES4&gt;&lt;/StringArray&gt;</net.dinglisch.android.tasker.RELEVANT_VARIABLES>
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>[Ljava.lang.String;</net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>
+				</Vals>
+			</Bundle>
+			<Str sr="arg1" ve="3"/>
+			<Str sr="arg2" ve="3">%nfc_payload</Str>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>37</code>
+			<coll>false</coll>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%nfc_payload</lhs>
+					<op>4</op>
+					<rhs>type=([^&amp;]+)&amp;id=([^&amp;]+)</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act10" ve="7">
+			<code>43</code>
+		</Action>
+		<Action sr="act11" ve="7">
+			<code>941</code>
+			<Str sr="arg0" ve="3">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;完成&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      margin: 0;
+      padding: 20px;
+      background: none;
+      color: #fce7e7;
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 4em;
+    }
+    p {
+      margin: 10px 0 20px;
+      font-size: 2em;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200px" height="200px" viewBox="0 0 200 200" version="1.1"&gt;
+        &lt;g id="surface1"&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,47.058824%,33.333334%);fill-opacity:1;" d="M 0 100 C 0 155.226562 44.773438 200 100 200 L 108.695312 100 L 100 0 C 44.773438 0 0 44.773438 0 100 Z M 0 100 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,33.725491%,16.862746%);fill-opacity:1;" d="M 100 0 L 100 200 C 155.226562 200 200 155.226562 200 100 C 200 44.773438 155.226562 0 100 0 Z M 100 0 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 63.105469 44.660156 L 44.660156 63.105469 L 81.554688 100 L 44.660156 136.894531 L 63.105469 155.339844 L 100 118.445312 L 108.695312 100 L 100 81.554688 Z M 63.105469 44.660156 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,91.764706%,76.47059%);fill-opacity:1;" d="M 155.339844 63.105469 L 136.894531 44.660156 L 100 81.554688 L 100 118.445312 L 136.894531 155.339844 L 155.339844 136.894531 L 118.445312 100 Z M 155.339844 63.105469 "/&gt;
+        &lt;/g&gt;
+    &lt;/svg&gt;
+    &lt;h1&gt;其他动作&lt;/h1&gt;
+    &lt;p&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</Str>
+			<Str sr="arg1" ve="3">HTML Popup</Str>
+			<Int sr="arg2" val="5"/>
+			<Int sr="arg3" val="1"/>
+		</Action>
+		<Action sr="act12" ve="7">
+			<code>38</code>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>339</code>
+			<Bundle sr="arg0">
+				<Vals sr="val">
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES>&lt;StringArray sr=""&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;%http_cookies
+Cookies
+服务器在响应中以 "Cookie:COOKIE_VALUE" 格式发送的Cookie, 您可以直接在 "HTTP 请求" 操作的 "标头" 字段中使用它&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES0&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES1&gt;%http_response_code
+响应代码
+服务器响应的HTTP代码&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES1&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;%http_response_length
+响应长度
+用bytes表示响应的大小&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES2&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES3&gt;%http_data
+数据
+服务器从HTTP request操作返回的数据&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES3&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES4&gt;%http_file_output
+文件输出
+即使您指定了文件保存的目录，也将始终包含文件的完整路径&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES4&gt;&lt;_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES5&gt;%http_headers()
+请求头
+服务器在响应中发送的 HTTP 标头，每个标头均采用 “键：值” ('key:value') 格式&lt;/_array_net.dinglisch.android.tasker.RELEVANT_VARIABLES5&gt;&lt;/StringArray&gt;</net.dinglisch.android.tasker.RELEVANT_VARIABLES>
+					<net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>[Ljava.lang.String;</net.dinglisch.android.tasker.RELEVANT_VARIABLES-type>
+				</Vals>
+			</Bundle>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg10" val="0"/>
+			<Int sr="arg11" val="0"/>
+			<Int sr="arg12" val="1"/>
+			<Str sr="arg2" ve="3">%nfc_webhook?%nfc_payload</Str>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Str sr="arg5" ve="3"/>
+			<Str sr="arg6" ve="3"/>
+			<Str sr="arg7" ve="3"/>
+			<Int sr="arg8" val="30"/>
+			<Int sr="arg9" val="1"/>
+		</Action>
+		<Action sr="act3" ve="7">
+			<code>37</code>
+			<coll>false</coll>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%http_response_code</lhs>
+					<op>0</op>
+					<rhs>200</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act4" ve="7">
+			<code>941</code>
+			<Str sr="arg0" ve="3">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;完成&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      margin: 0;
+      padding: 20px;
+      background: none;
+      color: #fce7e7;
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 4em;
+    }
+    p {
+      margin: 10px 0 20px;
+      font-size: 2em;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200px" height="200px" viewBox="0 0 200 200" version="1.1"&gt;
+        &lt;g id="surface1"&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(89.803922%,34.901962%,30.980393%);fill-opacity:1;" d="M 64.480469 142.105469 L 63.875 141.695312 C 59.1875 138.496094 52.792969 139.699219 49.59375 144.378906 L 23.511719 182.507812 C 20.3125 187.183594 21.515625 193.570312 26.203125 196.765625 L 26.808594 197.179688 C 31.496094 200.375 37.890625 199.171875 41.089844 194.492188 L 67.171875 156.367188 C 70.375 151.6875 69.167969 145.300781 64.480469 142.105469 Z M 64.480469 142.105469 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(94.117647%,81.568629%,26.274511%);fill-opacity:1;" d="M 89.441406 142.105469 L 88.835938 141.695312 C 84.148438 138.496094 77.753906 139.699219 74.550781 144.378906 L 48.46875 182.507812 C 45.269531 187.183594 46.472656 193.570312 51.160156 196.765625 L 51.769531 197.179688 C 56.453125 200.375 62.847656 199.171875 66.050781 194.492188 L 92.128906 156.367188 C 95.332031 151.6875 94.128906 145.300781 89.441406 142.105469 Z M 89.441406 142.105469 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(89.803922%,34.901962%,30.980393%);fill-opacity:1;" d="M 174.820312 182.464844 L 148.792969 144.53125 C 145.597656 139.875 139.214844 138.679688 134.539062 141.859375 L 133.933594 142.269531 C 129.253906 145.449219 128.050781 151.800781 131.246094 156.457031 L 157.277344 194.386719 C 160.472656 199.042969 166.855469 200.242188 171.53125 197.058594 L 172.136719 196.648438 C 176.816406 193.46875 178.015625 187.117188 174.820312 182.464844 Z M 174.820312 182.464844 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(94.117647%,81.568629%,26.274511%);fill-opacity:1;" d="M 149.914062 182.464844 L 123.882812 144.53125 C 120.6875 139.875 114.304688 138.679688 109.628906 141.859375 L 109.023438 142.269531 C 104.34375 145.449219 103.140625 151.800781 106.335938 156.457031 L 132.367188 194.386719 C 135.5625 199.042969 141.945312 200.242188 146.621094 197.058594 L 147.226562 196.648438 C 151.90625 193.46875 153.109375 187.117188 149.914062 182.464844 Z M 149.914062 182.464844 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(95.294118%,60.392159%,16.862746%);fill-opacity:1;" d="M 139.113281 71.226562 L 112.785156 66.167969 L 99.839844 42.675781 L 86.894531 66.167969 L 60.566406 71.226562 L 78.894531 90.808594 L 75.566406 117.425781 L 99.839844 106.035156 L 124.113281 117.425781 L 120.785156 90.808594 Z M 139.113281 71.226562 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(29.019609%,33.725491%,60.000002%);fill-opacity:1;" d="M 156.957031 84.863281 C 156.671875 116.230469 131.203125 141.695312 99.839844 141.980469 C 84.925781 142.117188 70.527344 135.964844 59.867188 125.667969 C 48.738281 114.910156 42.859375 100.117188 42.71875 84.863281 C 42.589844 70.339844 20.058594 70.328125 20.191406 84.863281 C 20.585938 128.515625 56.1875 164.117188 99.839844 164.511719 C 143.496094 164.910156 179.097656 127.914062 179.488281 84.863281 C 179.621094 70.328125 157.089844 70.339844 156.957031 84.863281 Z M 156.957031 84.863281 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(76.862746%,37.254903%,62.7451%);fill-opacity:1;" d="M 42.71875 81.132812 C 43.007812 49.765625 68.472656 24.296875 99.839844 24.011719 C 114.75 23.875 129.152344 30.027344 139.808594 40.328125 C 150.941406 51.085938 156.820312 65.878906 156.957031 81.132812 C 157.089844 95.652344 179.621094 95.667969 179.488281 81.132812 C 179.089844 37.480469 143.488281 1.878906 99.839844 1.480469 C 56.183594 1.085938 20.582031 38.078125 20.191406 81.132812 C 20.058594 95.667969 42.589844 95.652344 42.722656 81.132812 Z M 42.71875 81.132812 "/&gt;
+        &lt;/g&gt;
+    &lt;/svg&gt;
+    &lt;h1&gt;太棒了!&lt;/h1&gt;
+    &lt;p&gt;请继续保持整洁&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</Str>
+			<Str sr="arg1" ve="3">HTML Popup</Str>
+			<Int sr="arg2" val="5"/>
+			<Int sr="arg3" val="1"/>
+		</Action>
+		<Action sr="act5" ve="7">
+			<code>43</code>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%http_response_code</lhs>
+					<op>0</op>
+					<rhs>201</rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act6" ve="7">
+			<code>941</code>
+			<Str sr="arg0" ve="3">%http_data</Str>
+			<Str sr="arg1" ve="3">HTML Popup</Str>
+			<Int sr="arg2" val="600"/>
+			<Int sr="arg3" val="1"/>
+		</Action>
+		<Action sr="act7" ve="7">
+			<code>43</code>
+		</Action>
+		<Action sr="act8" ve="7">
+			<code>941</code>
+			<Str sr="arg0" ve="3">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;完成&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      margin: 0;
+      padding: 20px;
+      background: none;
+      color: #fce7e7;
+      font-family: "Segoe UI", sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 4em;
+    }
+    p {
+      margin: 10px 0 20px;
+      font-size: 2em;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200px" height="200px" viewBox="0 0 200 200" version="1.1"&gt;
+        &lt;g id="surface1"&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,47.058824%,33.333334%);fill-opacity:1;" d="M 0 100 C 0 155.226562 44.773438 200 100 200 L 108.695312 100 L 100 0 C 44.773438 0 0 44.773438 0 100 Z M 0 100 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,33.725491%,16.862746%);fill-opacity:1;" d="M 100 0 L 100 200 C 155.226562 200 200 155.226562 200 100 C 200 44.773438 155.226562 0 100 0 Z M 100 0 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 63.105469 44.660156 L 44.660156 63.105469 L 81.554688 100 L 44.660156 136.894531 L 63.105469 155.339844 L 100 118.445312 L 108.695312 100 L 100 81.554688 Z M 63.105469 44.660156 "/&gt;
+        &lt;path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,91.764706%,76.47059%);fill-opacity:1;" d="M 155.339844 63.105469 L 136.894531 44.660156 L 100 81.554688 L 100 118.445312 L 136.894531 155.339844 L 155.339844 136.894531 L 118.445312 100 Z M 155.339844 63.105469 "/&gt;
+        &lt;/g&gt;
+    &lt;/svg&gt;
+    &lt;h1&gt;发生错误&lt;/h1&gt;
+    &lt;p&gt;%http_data&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</Str>
+			<Str sr="arg1" ve="3">HTML Popup</Str>
+			<Int sr="arg2" val="5"/>
+			<Int sr="arg3" val="1"/>
+		</Action>
+		<Action sr="act9" ve="7">
+			<code>38</code>
+		</Action>
+		<ProfileVariable sr="pv0">
+			<clearout>true</clearout>
+			<exportval></exportval>
+			<immutable>true</immutable>
+			<pvci>true</pvci>
+			<pvd>n8n的webhook</pvd>
+			<pvdn>nfc_webhook</pvdn>
+			<pvid>2</pvid>
+			<pvit>t</pvit>
+			<pvn>%nfc_webhook</pvn>
+			<pvt>t</pvt>
+			<pvv>http://192.168.1.1:5678/webhook/nfctrigger</pvv>
+			<strout>true</strout>
+		</ProfileVariable>
+	</Task>
+</TaskerData>

@@ -1,0 +1,340 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "path": "nfctrigger",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -448,
+        256
+      ],
+      "id": "39da032e-3fc6-44af-a62d-5786982fb391",
+      "name": "Webhook",
+      "webhookId": "99032ae4-5ded-417f-9dc1-907f2386b3db"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"query\"][\"type\"] }}",
+                    "rightValue": "chores",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "5b3bc5e8-dc6c-404c-9bb4-adf9331cd281"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "chores"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "94e62e93-34ba-4af3-ba73-38a4bdabb51d",
+                    "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"query\"][\"type\"] }}",
+                    "rightValue": "light",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "light"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1c74b898-e013-45aa-9446-2b09c6945dd1",
+                    "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"query\"][\"type\"] }}",
+                    "rightValue": "robot",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "robot"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "dc790a04-b6e3-42f9-b3ec-4b2e0b3bd078",
+                    "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"query\"][\"type\"] }}",
+                    "rightValue": "tv",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "tv"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -224,
+        224
+      ],
+      "id": "5bbc565d-2c63-4d97-b69a-dc5dc7981748",
+      "name": "模式"
+    },
+    {
+      "parameters": {
+        "command": "=cd ~/chores-automation && python chores.py {{ $item(\"0\").$node[\"Webhook\"].json[\"query\"][\"id\"] }}"
+      },
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -336
+      ],
+      "id": "4576dc06-c49f-453f-888c-d82ef116ba5a",
+      "name": "chores"
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $item(\"0\").$node[\"chores\"].json[\"stdout\"];\n\nconst jsonStr = raw.replace(/'/g, '\"');\n\nlet obj;\ntry {\n  obj = JSON.parse(jsonStr);\n} catch (e) {\n  throw new Error(\"JSON 解析失败：\" + e.message);\n}\n\nlet html = `\n  <div style=\"background-color: transparent; padding: 20px; font-family: 'Segoe UI', sans-serif; color: white;\">\n    <h2 style=\"text-align: center; margin-bottom: 30px; font-weight: 500;\">🧼 待办家务</h2>\n    <div style=\"max-width: 800px; margin: 0 auto;\">\n`;\n\nfor (const [task, date] of Object.entries(obj)) {\n  html += `\n    <div style=\"\n      display: flex;\n      justify-content: space-between;\n      padding: 6px 10px;\n      margin-bottom: 4px;\n      border-radius: 4px;\n      background: rgba(255, 255, 255, 0.1);\n      backdrop-filter: blur(4px);\n      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);\n    \">\n      <span style=\"font-size: 16px;\">${task}</span>\n      <span style=\"font-size: 16px; font-weight: bold;\">${date}</span>\n    </div>\n  `;\n}\n\nhtml += `\n    </div>\n  </div>\n`;\n\nreturn [{\n  json: {\n    html\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        -416
+      ],
+      "id": "15bd21e7-94f2-497c-a970-20488d04b9dc",
+      "name": "chores-code"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $json.html }}",
+        "options": {
+          "responseCode": 201
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        672,
+        -416
+      ],
+      "id": "642c67a9-b5b9-45ad-b005-48f760bd8ce7",
+      "name": "Respond to Webhook1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"query\"][\"id\"] }}",
+                    "rightValue": "0",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "d4413d1f-cece-45de-8727-45efe5d64fcd"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "71da67b5-a028-4dc2-859f-54e729cbf466",
+                    "leftValue": "={{ $item(\"0\").$node[\"Webhook\"].json[\"query\"][\"id\"] }}",
+                    "rightValue": "0",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEquals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        224,
+        -336
+      ],
+      "id": "a924cb01-3b32-4a0f-ba6e-8c0457ea00e6",
+      "name": "Switch-Chores"
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $item(0).$node[\"chores\"].json.stdout }}",
+        "options": {
+          "responseCode": "={{ $item(0).$node[\"chores\"].json.exitCode === 0 ? 200 : 404 }}"
+        }
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        448,
+        -224
+      ],
+      "id": "74e97568-c484-461f-bf41-a24fab3bdc56",
+      "name": "Respond to Webhook2"
+    },
+    {
+      "parameters": {
+        "content": "## Chores",
+        "height": 336,
+        "width": 816,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -16,
+        -432
+      ],
+      "typeVersion": 1,
+      "id": "66b3cc72-7c5e-4a0f-8d25-e26bf01b1fab",
+      "name": "Sticky Note"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "模式",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "模式": {
+      "main": [
+        [
+          {
+            "node": "chores",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [],
+        [],
+        []
+      ]
+    },
+    "chores": {
+      "main": [
+        [
+          {
+            "node": "Switch-Chores",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "chores-code": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch-Chores": {
+      "main": [
+        [
+          {
+            "node": "chores-code",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {}
+}
